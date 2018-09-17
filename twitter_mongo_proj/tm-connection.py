@@ -1,6 +1,5 @@
 
 import argparse
-
 from import scrape_twitter
 from load_mongo import on_data
 
@@ -16,7 +15,7 @@ def run_():
     '''
 
     # (2)#Get tweets     
-    twitter = scrape_twitter.()
+    twitter = scrape_twitter()
     #functions I need to use    
     
     
