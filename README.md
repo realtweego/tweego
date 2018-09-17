@@ -7,14 +7,18 @@
 
 1. Clone the repository
 
-2. Install all required modules:
+2. Install MongoDB and start the server
+
+3. Install all required modules:
 
     pip install -r requirements.txt
     
-3. Install the program locally:
+4. Install the program locally:
  
     pip install -e .
-    
-4. Run tests
+ 
+5. Do something with the Twitter keys (??)
+
+6. Run tests
 
    pytest
