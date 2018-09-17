@@ -1,0 +1,4 @@
+.eggs/*
+.pytest_cache/*
+tests/__pycache__/*
+twitter_mongo_proj.egg-info/*
