@@ -29,6 +29,7 @@ class StreamListener(tweepy.StreamListener):
             return False
     
     def on_data(self, data):
+    #collect, filter and parse the tweets from twitter API
         global counter
         t=json.loads(data)
         created_at=t['created_at']
@@ -43,18 +44,19 @@ class StreamListener(tweepy.StreamListener):
             hashtags=[item['text'] for item in t['retweeted_status']['entities']['hashtags']]
         else:
             hashtags=[]
-        tweet = {'created_at':created_at,'id':tweet_id, 
-                 'text':text, 'username':username, 
-                 'followers':followers_count, 
-                 'user_favorites_count':user_favorites_count, 
-                 'retweets':retweet_count,'favorites':favorite_count,
-                 'hashtags':hashtags}
-        with open('tweets.json', 'a') as outfile:
-                json.dump(tweet, outfile)
-                outfile.write('\n')
-                counter +=1
-        if counter==100:
-                sys.exit(0)
+        if t['retweeted'] == False and 'RT' not in t['text']:
+            tweet = {'created_at':created_at,'id':tweet_id, 
+                     'text':text, 'username':username, 
+                     'followers':followers_count, 
+                     'user_favorites_count':user_favorites_count, 
+                     'retweets':retweet_count,'favorites':favorite_count,
+                     'hashtags':hashtags}
+            with open('tweets.json', 'a') as outfile:
+                    json.dump(tweet, outfile)
+                    outfile.write('\n')
+                    counter +=1
+            if counter==100:
+                    sys.exit(0)
 
 def get_tweets():
         stream_listener = StreamListener()
