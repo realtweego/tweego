@@ -3,6 +3,7 @@ import argparse
 import pymongo
 import urllib
 
+
 from twitter_mongo_proj.scrape_twitter import get_tweets
 from twitter_mongo_proj.load_mongo import load_data
 
@@ -11,8 +12,13 @@ from twitter_mongo_proj.load_mongo import load_data
 MONGO_HOST = 'mongodb://localhost/twitter.db'
 
 """
-username = urllib.parse.quote_plus('XXXX')
-password = urllib.parse.quote_plus('XXXX')
+# This code establishes the connection to the MongoDB Cloud Server
+%run -i environ_vars
+
+username = os.environ.get("MONGODB_USERNAME", '')
+password = os.environ.get("MONGODB_PASSWORD", '')
+username = urllib.parse.quote_plus(username)
+password = urllib.parse.quote_plus(password)
 client = pymongo.MongoClient(f"mongodb+srv://{username}:{password}@basilcluster-eoh28.mongodb.net/test?retryWrites=true")
 """
 def run()
