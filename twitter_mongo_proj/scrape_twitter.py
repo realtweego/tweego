@@ -7,10 +7,10 @@ Created on Mon Sep 17 14:13:24 2018
 import tweepy
 import json
 
-consumer_key = 'ivhtggTWukbnILTfJA4AKHuqC'
-consumer_secret = 'SM8EBt1Pt5qxOzGaTXtOO9cp0bvHmWpobdLL7EXmtJ6yp5snsb'
-access_token = '997026105562284033-kHm0NadJhcqh8B96eP2TyO6QqQcJYoD'
-access_token_secret = 'EuiRCKtyphNM8igNHS1Z67HqiBbWfbglTQicLcmGrZ4BE'
+consumer_key = ''
+consumer_secret = ''
+access_token = ''
+access_token_secret = ''
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth,wait_on_rate_limit=True)
