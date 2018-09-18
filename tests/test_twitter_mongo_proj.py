@@ -6,20 +6,13 @@
 import pytest
 
 
-from twitter_mongo_proj import twitter_mongo_proj
+from twitter_mongo_proj import scrape_twitter
 
 
-@pytest.fixture
-def response():
-    """Sample pytest fixture.
+def test_scrape():
+    """Connection to Twitter is established"""
+    json_filename = scrape_twitter.get_tweets()
+    j = open(json_filename).read()
+    tweet = json.loads(j)[0]
+    assert tweet["username"] != ""
 
-    See more at: http://doc.pytest.org/en/latest/fixture.html
-    """
-    # import requests
-    # return requests.get('https://github.com/audreyr/cookiecutter-pypackage')
-
-
-def test_content(response):
-    """Sample pytest test function with the pytest fixture as an argument."""
-    # from bs4 import BeautifulSoup
-    # assert 'GitHub' in BeautifulSoup(response.content).title.string
