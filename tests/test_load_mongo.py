@@ -4,16 +4,16 @@ from pymongo import MongoClient
 def test_db_notempty():
 
 	client = MongoClient()
-	result = client.twitterdb.collections.count()
+	result = client.twitter.collections.tweets.count()
 	assert result != 0
 
 
-def test_on_data():
+def test_load_mongo():
 
 	client = MongoClient()
-	before = client.twitterdb.collections.count()
-	on_data()
-	after = client.twitterdb.collections.count()
+	before = client.twitter.collections.tweets.count()
+	load_mongo()
+	after = client.twitter.collections.tweets.count()
 	assert after > before 
 
  
