@@ -11,8 +11,8 @@ from twitter_mongo_proj.load_mongo import load_data
 MONGO_HOST = 'mongodb://localhost/twitter.db'
 
 """
-username = urllib.parse.quote_plus('basil_master')
-password = urllib.parse.quote_plus('basil_spice')
+username = urllib.parse.quote_plus('XXXX')
+password = urllib.parse.quote_plus('XXXX')
 client = pymongo.MongoClient(f"mongodb+srv://{username}:{password}@basilcluster-eoh28.mongodb.net/test?retryWrites=true")
 """
 def run()
