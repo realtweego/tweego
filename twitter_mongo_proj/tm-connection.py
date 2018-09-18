@@ -1,8 +1,7 @@
-
-import argparse
+#import argparse
 import pymongo
-import urllib
-
+#import urllib
+import json
 
 from twitter_mongo_proj.scrape_twitter import get_tweets
 from twitter_mongo_proj.load_mongo import load_data
