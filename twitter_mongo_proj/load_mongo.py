@@ -2,7 +2,7 @@ from pymongo import MongoClient
 
 
 def load_data(MONGO_HOST, data_list):
-    client = MongoClient(MONGO_HOST)
+    client = MONGO_HOST
             
     #insert the data into the mongoDB into a collection called tweets
     #if tweets doesn't exist, it will be created.
