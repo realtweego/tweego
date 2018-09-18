@@ -3,8 +3,8 @@ import pymongo
 #import urllib
 import json
 
-from twitter_mongo_proj.scrape_twitter import get_tweets
-from twitter_mongo_proj.load_mongo import load_data
+from scrape_twitter import get_tweets
+from load_mongo import load_data
 
 
 #1) Define Database
