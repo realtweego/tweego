@@ -1,30 +1,33 @@
 
 import argparse
-from import scrape_twitter
-from load_mongo import on_data
+from twitter_mongo_proj.scrape_twitter import get_tweets
+from twitter_mongo_proj.load_mongo import load_data
 
 
-def run_():
+#1) Define Database
+MONGO_HOST = 'mongodb://localhost/twitter.db'
+
+
+def run()
     ''' This function uses scrape_twitter.py to access Twitter and retrieve tweets through
         tweepy. It than opens an MongoDB and stores the tweets'''
+            
+    #2) Get tweets based on generator 
     
-    # (1) Connect to MongoDB instance
-    client = MongoClient('mongodb://admin:Password1@localhost:27017/test')
-    '''
-    1. Get MongoDB details as required
-    '''
-
-    # (2)#Get tweets     
-    twitter = scrape_twitter()
-    #functions I need to use    
+    #2.1) Getting JSON-file of tweets in current working directory
+    get_tweets()
     
+    #2.2) Open tweets-file and store all tweets in a list 
+    with open('tweets.json') as data:
+
+        data_list = []
+   
+        for i in data:
+       
+            data_list.append(json.loads(i))
     
-    # (3) Store tweets in MongoDB
-    load_mongo.on_data(twitter)
-    #functions I need to use
-
-
-
+    #3) Open Database and store tweets in MongoDB from a JSON-file in current working directory
+    load_data(MONGO_HOST, data_list)
 
 if __name__ == "__main__":
     run()
