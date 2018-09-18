@@ -1,5 +1,4 @@
 from pymongo import MongoClient
-import json
 
 
 def load_data(MONGO_HOST, data_list):
