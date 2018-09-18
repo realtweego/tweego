@@ -56,7 +56,7 @@ class StreamListener(tweepy.StreamListener):
                     outfile.write('\n')
                     counter +=1
             if counter==100:
-                    sys.exit(0)
+                    return False
 
 def get_tweets():
         stream_listener = StreamListener()
