@@ -1,5 +1,5 @@
 #from pymongo import MongoClient
-
+#from pymongo import MongoClient
 
 def load_data(client, data_list):
     #client = MONGO_HOST
