@@ -11,3 +11,6 @@ tweepy==3.6.0
 pymongo==3.7.1
 pytest==3.4.2
 pytest-runner==2.11.1
+tweepy==3.6.0
+json==2.0.9
+sys

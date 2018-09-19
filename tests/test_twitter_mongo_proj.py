@@ -4,8 +4,7 @@
 """Tests for `twitter_mongo_proj` package."""
 
 import pytest
-
-
+import json
 from twitter_mongo_proj import scrape_twitter
 
 
@@ -15,4 +14,3 @@ def test_scrape():
     j = open(json_filename).read()
     tweet = json.loads(j)[0]
     assert tweet["username"] != ""
-
