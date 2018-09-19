@@ -65,7 +65,7 @@ class StreamListener(tweepy.StreamListener):
             media_url = None
             media_type =''
         if t['retweeted'] == False and 'RT' not in t['text'] and t['in_reply_to_status_id'] == None:
-            #extended = t.get('extended_tweet','default')
+            #extended = t.get('extended_tweet', 'default')
             tweet = {'created_at':created_at,'id':tweet_id, 
                      'text':text, 'username':username, 
                      'followers':followers_count, 
@@ -78,10 +78,10 @@ class StreamListener(tweepy.StreamListener):
             if self.counter == self.limit:
                     return False
 
-def get_tweets(limit,callback):
+def get_tweets(limit, callback):
         stream_listener = StreamListener(limit, callback)
         stream = tweepy.Stream(auth=api.auth, listener=stream_listener)
-        stream.filter(track = ['Machine learning','#ML','BigData','Artificial Intelligence','Big Data'], languages = ['en'])#,async = True)
+        stream.filter(track = ['Machine learning', '#ML', 'BigData', 'Artificial Intelligence', 'Big Data'], languages = ['en'])#,async = True)
         
                              
 if __name__ == '__main__':
