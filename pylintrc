@@ -1,0 +1,6 @@
+[MESSAGES CONTROL]
+#disable =
+#    invalid-name
+
+[BASIC]
+const-rgx = (([A-Za-z_][A-Za-z0-9_]*)|(__.*__)|log|urlpatterns)$
