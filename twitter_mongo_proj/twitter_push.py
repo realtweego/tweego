@@ -1,9 +1,11 @@
-
 '''Feature to push messages to twitter'''
 #http://nodotcom.org/python-twitter-tutorial.html
 
-#Import necessary packages
 import tweepy
+import os
+import pymongo
+import urllib
+import pandas as pd
 
 #Create function for the API configration to use twitter
 def get_api(cfg):
@@ -15,16 +17,32 @@ def get_api(cfg):
 def main():
   # Fill in the values noted in previous step here
   cfg = { 
-    "consumer_key"        : "",
-    "consumer_secret"     : "",
-    "access_token"        : "",
+    "consumer_key"        : ""
+    "consumer_secret"     : ""
+    "access_token"        : ""
     "access_token_secret" : "" 
     }
+
   #Set up API
   api = get_api(cfg)
   # Create tweet and send it to twitter
-  tweet = "Hi I am the SPICED - Machine Learning BOT. This is my first tweet. Let the learning begin! #AI#MachineLearning#DeeperDeepLearning"
+  tweet = a
   status = api.update_status(status=tweet)
+  
+#%run -i environ_vars
+username = "basil_master"
+password = "basil_spice"
+username = urllib.parse.quote_plus(username)
+password = urllib.parse.quote_plus(password)
+client = pymongo.MongoClient(f"mongodb+srv://{username}:{password}@basilcluster-eoh28.mongodb.net/test?retryWrites=true")
+
+db = client.twitter # client.twitter_test
+posts = db.collections.tweets_labeled
+df = posts.find()
+df = pd.DataFrame(list(df))
+df.head()
+
+df.iloc[df[df["followers"] == df["followers"].max()].index[0]]["text"]
 
 if __name__ == "__main__":
   main()
