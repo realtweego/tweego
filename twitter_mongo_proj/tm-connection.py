@@ -5,7 +5,7 @@ import json
 #from scrape_twitter import get_tweets
 from load_mongo import load_data
 from scrape_twitter import get_tweets
-#from pymongo import MongoClient
+
 
 username = ""
 password = ""
