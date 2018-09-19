@@ -8,7 +8,8 @@ if "%SPHINXBUILD%" == "" (
 	set SPHINXBUILD=python -msphinx
 )
 set SOURCEDIR=.
-set BUILDDIR=_build
+REM set BUILDDIR=_build
+set BUILDDIR=..
 set SPHINXPROJ=twitter_mongo_proj
 
 if "%1" == "" goto help
