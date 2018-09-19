@@ -30,8 +30,8 @@ def main():
   status = api.update_status(status=tweet)
   
 #%run -i environ_vars
-username = "basil_master"
-password = "basil_spice"
+username = ""
+password = ""
 username = urllib.parse.quote_plus(username)
 password = urllib.parse.quote_plus(password)
 client = pymongo.MongoClient(f"mongodb+srv://{username}:{password}@basilcluster-eoh28.mongodb.net/test?retryWrites=true")
