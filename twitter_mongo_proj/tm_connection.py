@@ -31,14 +31,14 @@ class read_into_Mongo:
         followers=[]
         for tweet in data_list:
             followers.append(tweet['followers'])
-        for i in range(len(data_list)//10):
-            for tweet in data_list:
-                if tweet['followers']==max(followers):
-                    tweet['interesting']=1
-            followers.remove(max(followers))
+        #for i in range(len(data_list)//10):
+        for tweet in data_list:
+            if tweet['followers']==max(followers):
+                tweet['interesting']=1
+            #followers.remove(max(followers))
         client.twitter.collections.tweets_labeled.insert(data_list)
 
-        client.twitter.collections.tweets.insert(data_list)
+        #client.twitter.collections.tweets.insert(data_list)
     def new_tweet(self, text):
         #db = MONGO_HOST
         self.buffer.append(text)
