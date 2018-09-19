@@ -21,7 +21,7 @@ FILENAME = 'tweets.json'
 class StreamListener(tweepy.StreamListener):
     def __init__(self, limit, callback):
         super().__init__()
-        self.limit=limit
+        self.limit = limit
         self.counter=0
         self.callback=callback
         
@@ -34,28 +34,28 @@ class StreamListener(tweepy.StreamListener):
     
     def on_data(self, data):
     #collect, filter and parse the tweets from twitter API
-        t=json.loads(data)
-        created_at=t['created_at']
-        tweet_id=t['id_str']
+        t = json.loads(data)
+        created_at = t['created_at']
+        tweet_id = t['id_str']
         if 'extended_tweet' in t:
-            text=t['extended_tweet']['full_text']
+            text = t['extended_tweet']['full_text']
         else:
             text = t['text']
         username = t['user']['screen_name']
-        followers_count=t['user']['followers_count']
-        user_favorites_count=t['user']['favourites_count']
-        retweet_count=t['retweet_count']
-        favorite_count=t['favorite_count']
-        hashtags=[]
+        followers_count = t['user']['followers_count']
+        user_favorites_count = t['user']['favourites_count']
+        retweet_count = t['retweet_count']
+        favorite_count = t['favorite_count']
+        hashtags = []
         if 'extended_tweet' in t:
             for hashtag in t['extended_tweet']['entities']['hashtags']:
                 hashtags.append(hashtag['text'])
         elif 'hashtags' in t['entities'] and len(t['entities']['hashtags']) > 0:
                 hashtags=[item['text'] for item in t['entities']['hashtags']]
         else:
-            hashtags=[]
+            hashtags = []
         #still working on this
-        media_url=[]
+        media_url = []
         if 'extended_tweet' in t and 'media' in t['extended_tweet']['entities']:
             #extended=t.get('extended_tweet')
             for media in t['extended_tweet']['entities']['media']:
@@ -63,9 +63,9 @@ class StreamListener(tweepy.StreamListener):
                 media_type=media['type']
         else:
             media_url = None
-            media_type=''
-        if t['retweeted'] == False and 'RT' not in t['text'] and t['in_reply_to_status_id']==None:
-            #extended=t.get('extended_tweet','default')
+            media_type =''
+        if t['retweeted'] == False and 'RT' not in t['text'] and t['in_reply_to_status_id'] == None:
+            #extended = t.get('extended_tweet','default')
             tweet = {'created_at':created_at,'id':tweet_id, 
                      'text':text, 'username':username, 
                      'followers':followers_count, 
@@ -75,13 +75,13 @@ class StreamListener(tweepy.StreamListener):
                      'media_type':media_type, 'interesting':0}
             self.callback(tweet)
             self.counter +=1
-            if self.counter==self.limit:
+            if self.counter == self.limit:
                     return False
 
 def get_tweets(limit,callback):
         stream_listener = StreamListener(limit, callback)
         stream = tweepy.Stream(auth=api.auth, listener=stream_listener)
-        stream.filter(track=['Machine learning','#ML','BigData','Artificial Intelligence','Big Data'], languages=['en'])#,async=True)
+        stream.filter(track = ['Machine learning','#ML','BigData','Artificial Intelligence','Big Data'], languages = ['en'])#,async = True)
         
                              
 if __name__ == '__main__':
