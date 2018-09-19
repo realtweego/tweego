@@ -9,8 +9,8 @@ from scrape_twitter import get_tweets
 
 username = ""
 password = ""
-username = urllib.parse.quote_plus(username)
-password = urllib.parse.quote_plus(password)
+username = ''#urllib.parse.quote_plus(username)
+password = ''#urllib.parse.quote_plus(password)
 #MONGO_HOST = pymongo.MongoClient()
 #f"mongodb+srv://{username}:{password}@basilcluster-eoh28.mongodb.net/test?retryWrites=true"
 
@@ -37,5 +37,5 @@ def load_to_mongo(chunk_size,db,limit):
     get_tweets(limit,read_into_Mongo(chunk_size,db,limit).new_tweet)
 
 if __name__=='__main__':
-    load_to_mongo(3,pymongo.MongoClient(),10)
+    load_to_mongo(50,pymongo.MongoClient(),1500)
     
