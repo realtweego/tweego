@@ -22,3 +22,5 @@
 6. Run tests
 
    pytest
+
+[![Build Status](https://travis-ci.org/ErikMann/Twitter_Mongo_Proj.svg?branch=master)](https://travis-ci.org/ErikMann/Twitter_Mongo_Proj)
