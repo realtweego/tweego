@@ -12,7 +12,7 @@ password = ''#urllib.parse.quote_plus(password)
 #f"mongodb+srv://{username}:{password}@basilcluster-eoh28.mongodb.net/test?retryWrites = true"
 
 class read_into_Mongo:
-    def __init__(self,chunk_size,db,limit):
+    def __init__(self, chunk_size, db, limit):
         self.chunk_size = chunk_size
         self.db = db
         self.buffer = []
@@ -24,15 +24,15 @@ class read_into_Mongo:
         if self.limit - self.counter < self.chunk_size:
             self.chunk_size = self.limit - self.counter
         if len(self.buffer) >= self.chunk_size:
-            load_data(self.db,self.buffer)
+            load_data(self.db, self.buffer)
             self.buffer = []
             self.counter += self.chunk_size
         print("Processed Tweet")
 
 
 def load_to_mongo(chunk_size,db,limit):
-    get_tweets(limit,read_into_Mongo(chunk_size,db,limit).new_tweet)
+    get_tweets(limit, read_into_Mongo(chunk_size, db, limit).new_tweet)
 
 if __name__=='__main__':
-    load_to_mongo(50,pymongo.MongoClient(),1500)
+    load_to_mongo(50, pymongo.MongoClient(), 1500)
     
