@@ -13,13 +13,13 @@ access_token = ''
 access_token_secret = ''
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
-api = tweepy.API(auth,wait_on_rate_limit=True)
+api = tweepy.API(auth, wait_on_rate_limit=True)
 user = api.me()
 print (user.name)
 FILENAME = 'tweets.json'
 
 class StreamListener(tweepy.StreamListener):
-    def __init__(self,limit,callback):
+    def __init__(self, limit, callback):
         super().__init__()
         self.limit=limit
         self.counter=0
@@ -79,10 +79,10 @@ class StreamListener(tweepy.StreamListener):
                     return False
 
 def get_tweets(limit,callback):
-        stream_listener = StreamListener(limit,callback)
+        stream_listener = StreamListener(limit, callback)
         stream = tweepy.Stream(auth=api.auth, listener=stream_listener)
         stream.filter(track=['Machine learning','#ML','BigData','Artificial Intelligence','Big Data'], languages=['en'])#,async=True)
         
                              
 if __name__ == '__main__':
-    get_tweets(5,print)
+    get_tweets(5, print)
