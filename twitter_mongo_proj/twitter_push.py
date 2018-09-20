@@ -3,7 +3,6 @@ import pymongo
 from tm_connection import load_to_mongo
 from config import cfg, client
 from math import ceil
-from bson.son import SON
 
 #Create function for the API configration to use twitter
 def get_api(cfg):
