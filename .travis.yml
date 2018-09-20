@@ -12,5 +12,5 @@ install:
          
 # Command to run tests, e.g. python setup.py test
 script: 
-  - pylint twitter_mongo_proj/
+  - pylint tweego/
 

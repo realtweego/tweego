@@ -1,6 +1,6 @@
 # 
 
-![project flowchart](https://github.com/ktroutman/Twitter_Mongo_Proj/blob/master/title_image.png)
+![project flowchart](https://github.com/ktroutman/tweego/blob/master/title_image.png)
 
 
 ## Setting up development
@@ -19,14 +19,14 @@
  
 5. Add your credentials
 
-    `cp twitter_mongo_proj/config_example.py twitter_mongo_proj/config.py`
+    `cp tweego/config_example.py tweego/config.py`
     
     Add your twitter keys and mongo connection to config.py
 
-6. Add search keywords which you would like to tweet about in `twitter_mongo_proj/keywords.py`
+6. Add search keywords which you would like to tweet about in `tweego/keywords.py`
 	
 7. Run tests
 
    pytest
 
-[![Build Status](https://travis-ci.org/ErikMann/Twitter_Mongo_Proj.svg?branch=master)](https://travis-ci.org/ErikMann/Twitter_Mongo_Proj)
+[![Build Status](https://travis-ci.org/ErikMann/tweego.svg?branch=master)](https://travis-ci.org/ErikMann/tweego)

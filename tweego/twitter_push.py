@@ -1,7 +1,7 @@
 import tweepy
 import pymongo
-from tm_connection import load_to_mongo
-from config import cfg, client
+from tweego.tm_connection import load_to_mongo
+from tweego.config import cfg, client
 from math import ceil
 
 #Create function for the API configration to use twitter

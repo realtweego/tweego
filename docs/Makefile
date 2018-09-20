@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = python -msphinx
-SPHINXPROJ    = twitter_mongo_proj
+SPHINXPROJ    = tweego
 SOURCEDIR     = .
 # BUILDDIR      = _build
 BUILDDIR      = ..
