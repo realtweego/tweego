@@ -1,4 +1,4 @@
-# Twitter Scraping and MongoDB Project
+# 
 
 ![project flowchart](https://github.com/ktroutman/Twitter_Mongo_Proj/blob/master/title_image.png)
 
@@ -17,8 +17,14 @@
  
     pip install -e .
  
-5. Do something with the Twitter keys (??)
+5. Add your credentials
+
+    `cp twitter_mongo_proj/config_example.py twitter_mongo_proj/config.py`
+    
+    Add your twitter keys and mongo connection to config.py
 
 6. Run tests
 
    pytest
+
+[![Build Status](https://travis-ci.org/ErikMann/Twitter_Mongo_Proj.svg?branch=master)](https://travis-ci.org/ErikMann/Twitter_Mongo_Proj)
