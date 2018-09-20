@@ -1,5 +1,5 @@
 # Config file for automatic testing at travis-ci.org
-
+services: mongodb
 language: python
 python:
   - 3.6
@@ -13,4 +13,5 @@ install:
 # Command to run tests, e.g. python setup.py test
 script: 
   - pylint tweego/
+  - pytest
 
