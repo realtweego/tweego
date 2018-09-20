@@ -6,12 +6,11 @@ python:
 
 
 # Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-install: pip install -r requirements.txt 
-         pip install -r requirements_dev.txt
+install: 
+  - pip install -r requirements.txt 
+  - pip install -r requirements_dev.txt
          
 # Command to run tests, e.g. python setup.py test
 script: 
-
-
-pylint twitter_mongo_proj/
+  - pylint twitter_mongo_proj/
 
