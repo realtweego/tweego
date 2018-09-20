@@ -17,7 +17,11 @@
  
     pip install -e .
  
-5. Do something with the Twitter keys (??)
+5. Add your credentials
+
+    `cp twitter_mongo_proj/config_example.py twitter_mongo_proj/config.py`
+    
+    Add your twitter keys and mongo connection to config.py
 
 6. Run tests
 
