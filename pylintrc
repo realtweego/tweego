@@ -1,6 +1,6 @@
 [MESSAGES CONTROL]
-#disable =
-#    invalid-name
-
+disable =
+    missing-docstring
+max-line-length = 120
 [BASIC]
 const-rgx = (([A-Za-z_][A-Za-z0-9_]*)|(__.*__)|log|urlpatterns)$
