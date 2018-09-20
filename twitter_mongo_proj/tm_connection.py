@@ -36,12 +36,10 @@ def load_to_mongo(chunk_size, limit):
 
 if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser(description = 'Collect tweets and put them into a database')
-
-    parser.add_argument('--chunk_size', type = int, default = 2, help = 'How many tweets do you want to grab at a time?')
-    parser.add_argument('--client', type = str,default = "", help = 'Enter the string that points to the relevant database')
-    parser.add_argument('--total_number', type=int, default = 4, help = 'How many total tweets do you want to get?')
-
+    parser=argparse.ArgumentParser(description='Collect tweets and put them into a database')
+    parser.add_argument('--chunk_size', type=int, default=2, help='How many tweets do you want to grab at a time?')
+    parser.add_argument('--client', type=str, default="", help='Enter the string that points to the relevant database')
+    parser.add_argument('--total_number', type=int, default=4, help='How many total tweets do you want to get?')
 
     args = parser.parse_args()
     if args.client == "":
@@ -49,4 +47,4 @@ if __name__ == '__main__':
     else:
         client = pymongo.MongoClient(args.client)
 
-    load_to_mongo(args.chunk_size, args.total_number, client)
+    load_to_mongo(args.chunk_size, args.total_number)
