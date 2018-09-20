@@ -12,13 +12,11 @@ class read_into_Mongo:
         self.buffer = []
         self.limit = limit
         self.counter = 0
-		
     def load_data(self):
-	
         '''insert the data into the mongoDB into a collection called tweets
         if tweets doesn't exist, it will be created.'''
-		
-        followers = [tweet['followers'] for tweet in self.buffer]		
+
+        followers = [tweet['followers'] for tweet in self.buffer]
         for tweet in self.buffer:
             if tweet['followers'] == max(followers):
                 tweet['interesting'] = 1
