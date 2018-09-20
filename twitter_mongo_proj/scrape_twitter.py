@@ -1,17 +1,18 @@
 import tweepy
 import json
+from config import cfg
+from keywords import keywords
 
-consumer_key = ''
-consumer_secret = ''
-access_token = ''
-access_token_secret = ''
+consumer_key = cfg['consumer_key']
+consumer_secret = cfg['consumer_secret']
+access_token = cfg['access_token']
+access_token_secret = cfg['access_token_secret']
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True)
 user = api.me()
 print("connection established with user: ", user.name)
-DEFAULT_HASHTAGS = ['Machine learning', '#ML',
-                    'BigData', 'Artificial Intelligence', 'Big Data']
+KEYWORDS = keywords
 
 
 class StreamListener(tweepy.StreamListener):
@@ -36,20 +37,8 @@ class StreamListener(tweepy.StreamListener):
             media_url = None
             media_type = ''
         return media_url, media_type
-
-    def get_tweet_dict(self, t):
-        '''extract information from the tweet'''
-        tweet_id = t['id_str']
-        if 'extended_tweet' in t:
-            text = t['extended_tweet']['full_text']
-        else:
-            text = t['text']
-        followers_count = t['user']['followers_count']
-        user_favorites_count = t['user']['favourites_count']
-        retweet_count = t['retweet_count']
-        favorite_count = t['favorite_count']
-
-        # TODO: separate function for hashtags
+    
+    def get_hashtags(self, t):
         hashtags = []
         if 'extended_tweet' in t:
             for hashtag in t['extended_tweet']['entities']['hashtags']:
@@ -58,17 +47,24 @@ class StreamListener(tweepy.StreamListener):
             hashtags = [item['text'] for item in t['entities']['hashtags']]
         else:
             hashtags = []
-
+        return hashtags
+    
+    def get_tweet_dict(self, t):
+        '''extract information from the tweet'''
+        if 'extended_tweet' in t:
+            text = t['extended_tweet']['full_text']
+        else:
+            text = t['text']
+        hashtags = self.get_hashtags(t)
         media_url, media_type = self.get_media(t)
-
         tweet = {'created_at': t['created_at'],
-                 'id': tweet_id,
+                 'id': t['id_str'],
                  'text': text,
                  'username': t['user']['screen_name'],
-                 'followers': followers_count,
-                 'user_favorites_count': user_favorites_count,
-                 'retweets': retweet_count,
-                 'favorites': favorite_count,
+                 'followers':t['user']['followers_count'],
+                 'user_favorites_count': t['user']['favourites_count'],
+                 'retweets': t['retweet_count'],
+                 'favorites': t['favorite_count'],
                  'hashtags': hashtags,
                  'media_url': media_url,
                  'media_type': media_type,
@@ -90,7 +86,7 @@ class StreamListener(tweepy.StreamListener):
 def get_tweets(limit, callback):
     stream_listener = StreamListener(limit, callback)
     stream = tweepy.Stream(auth=api.auth, listener=stream_listener)
-    stream.filter(track=DEFAULT_HASHTAGS, languages=['en'])
+    stream.filter(track=keywords, languages=['en'])
 
 
 if __name__ == '__main__':

@@ -1,21 +1,14 @@
 import argparse
 import pymongo
-import urllib
 from scrape_twitter import get_tweets
+from config import client
 
-'''
-TO DO: Ask Kent where this needs to be put 
-
-username = urllib.parse.quote_plus(username)
-password = urllib.parse.quote_plus(password)
-#f"mongodb+srv://{username}:{password}@basilcluster-eoh28.mongodb.net/test?retryWrites=true"
-'''
 
 class read_into_Mongo:
 
-    def __init__(self, chunk_size, db, limit):
+    def __init__(self, chunk_size, limit):
         self.chunk_size = chunk_size
-        self.db = db
+        #self.db = client
         self.buffer = []
         self.limit = limit
         self.counter = 0
@@ -29,7 +22,7 @@ class read_into_Mongo:
         for tweet in self.buffer:
             if tweet['followers'] == max(followers):
                 tweet['interesting'] = 1
-        self.db.twitter.collections.tweets_labeled.insert(self.buffer)
+        client.twitter.collections.tweets_labeled.insert(self.buffer)
 
     def new_tweet(self, text):
         self.buffer.append(text)
@@ -40,8 +33,8 @@ class read_into_Mongo:
             self.buffer = []
             self.counter += self.chunk_size
 
-def load_to_mongo(chunk_size, limit, db):
-    get_tweets(limit, read_into_Mongo(chunk_size, db, limit).new_tweet)
+def load_to_mongo(chunk_size, limit):
+    get_tweets(limit, read_into_Mongo(chunk_size, limit).new_tweet)
 
 if __name__ == '__main__':
 
