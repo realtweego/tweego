@@ -1,4 +1,4 @@
-# Twitter Scraping and MongoDB Project
+# 
 
 ![project flowchart](https://github.com/ktroutman/Twitter_Mongo_Proj/blob/master/title_image.png)
 
@@ -22,3 +22,5 @@
 6. Run tests
 
    pytest
+
+[![Build Status](https://travis-ci.org/ErikMann/Twitter_Mongo_Proj.svg?branch=master)](https://travis-ci.org/ErikMann/Twitter_Mongo_Proj)
