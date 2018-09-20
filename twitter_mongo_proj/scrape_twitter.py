@@ -1,5 +1,5 @@
-import tweepy
 import json
+import tweepy
 from config import cfg
 from keywords import keywords
 
@@ -35,7 +35,7 @@ class StreamListener(tweepy.StreamListener):
             media_url = None
             media_type = ''
         return media_url, media_type
-    
+
     def get_hashtags(self, t):
         hashtags = []
         if 'extended_tweet' in t:
@@ -46,7 +46,7 @@ class StreamListener(tweepy.StreamListener):
         else:
             hashtags = []
         return hashtags
-    
+
     def get_tweet_dict(self, t):
         '''extract information from the tweet'''
         if 'extended_tweet' in t:
@@ -66,8 +66,7 @@ class StreamListener(tweepy.StreamListener):
                  'hashtags': hashtags,
                  'media_url': media_url,
                  'media_type': media_type,
-                 'interesting': 0
-        }
+                 'interesting': 0}
         return tweet
 
     def on_data(self, data):
