@@ -26,20 +26,30 @@ class StreamListener(tweepy.StreamListener):
         if status_code == 420:
             return False
 
-    def on_data(self, data):
-        '''collect, filter and parse the tweets from twitter API'''
-        t = json.loads(data)
-        created_at = t['created_at']
+    def get_media(self, t):
+        media_url = []
+        if 'extended_tweet' in t and 'media' in t['extended_tweet']['entities']:
+            for media in t['extended_tweet']['entities']['media']:
+                media_url.append(media['media_url_https'])
+                media_type = media['type']
+        else:
+            media_url = None
+            media_type = ''
+        return media_url, media_type
+
+    def get_tweet_dict(self, t):
+        '''extract information from the tweet'''
         tweet_id = t['id_str']
         if 'extended_tweet' in t:
             text = t['extended_tweet']['full_text']
         else:
             text = t['text']
-        username = t['user']['screen_name']
         followers_count = t['user']['followers_count']
         user_favorites_count = t['user']['favourites_count']
         retweet_count = t['retweet_count']
         favorite_count = t['favorite_count']
+
+        # TODO: separate function for hashtags
         hashtags = []
         if 'extended_tweet' in t:
             for hashtag in t['extended_tweet']['entities']['hashtags']:
@@ -49,23 +59,28 @@ class StreamListener(tweepy.StreamListener):
         else:
             hashtags = []
 
-        media_url = []
-        if 'extended_tweet' in t and 'media' in t['extended_tweet']['entities']:
-            for media in t['extended_tweet']['entities']['media']:
-                media_url.append(media['media_url_https'])
-                media_type = media['type']
-        else:
-            media_url = None
-            media_type = ''
+        media_url, media_type = self.get_media(t)
 
+        tweet = {'created_at': t['created_at'],
+                 'id': tweet_id,
+                 'text': text,
+                 'username': t['user']['screen_name'],
+                 'followers': followers_count,
+                 'user_favorites_count': user_favorites_count,
+                 'retweets': retweet_count,
+                 'favorites': favorite_count,
+                 'hashtags': hashtags,
+                 'media_url': media_url,
+                 'media_type': media_type,
+                 'interesting': 0
+        }
+        return tweet
+
+    def on_data(self, data):
+        '''collect, filter and parse the tweets from twitter API'''
+        t = json.loads(data)
         if t['retweeted'] == False and 'RT' not in t['text'] and t['in_reply_to_status_id'] == None:
-            tweet = {'created_at': created_at, 'id': tweet_id,
-                     'text': text, 'username': username,
-                     'followers': followers_count,
-                     'user_favorites_count': user_favorites_count,
-                     'retweets': retweet_count, 'favorites': favorite_count,
-                     'hashtags': hashtags, 'media_url': media_url,
-                     'media_type': media_type, 'interesting': 0}
+            tweet = self.get_tweet_dict(t)
             self.callback(tweet)
             self.counter += 1
             if self.counter == self.limit:
