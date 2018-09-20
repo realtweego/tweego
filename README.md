@@ -23,7 +23,9 @@
     
     Add your twitter keys and mongo connection to config.py
 
-6. Run tests
+6. Add search keywords which you would like to tweet about in `twitter_mongo_proj/keywords.py`
+	
+7. Run tests
 
    pytest
 
