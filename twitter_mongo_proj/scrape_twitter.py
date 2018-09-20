@@ -12,8 +12,6 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True)
 user = api.me()
 print("connection established with user: ", user.name)
-KEYWORDS = keywords
-
 
 class StreamListener(tweepy.StreamListener):
     def __init__(self, limit, callback):
