@@ -101,3 +101,5 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+twitter_mongo_proj/config.py
