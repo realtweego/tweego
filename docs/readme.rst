@@ -1,0 +1,5 @@
+======
+readme
+======
+
+.. mdinclude:: readme.md

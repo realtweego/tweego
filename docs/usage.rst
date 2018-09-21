@@ -6,16 +6,14 @@ Usage
 
 2. Install MongoDB and start the server
 
-3. Install all required modules:
+3. Install all required modules: pip install -r requirements.txt
 
-    pip install -r requirements.txt
-    
-4. Install the program locally:
- 
-    pip install -e .
- 
-5. Do something with the Twitter keys (??)
+4. Install the program locally: pip install -e .
 
-6. Run tests
+5. Add your credentials: cp tweego/config_example.py tweego/config.py
 
-   pytest
+6. Add your twitter keys and mongo connection to config.py
+
+7. Add search keywords which you would like to tweet about: tweego/keywords.py
+
+8. Run tests: pytest
