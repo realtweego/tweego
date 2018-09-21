@@ -4,10 +4,10 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = python -msphinx
-SPHINXPROJ    = twitter_mongo_proj
+SPHINXPROJ    = tweego
 SOURCEDIR     = .
-# BUILDDIR      = _build
-BUILDDIR      = ..
+BUILDDIR      = _build
+
 
 # Put it first so that "make" without argument is like "make help".
 help:

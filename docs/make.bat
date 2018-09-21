@@ -10,7 +10,7 @@ if "%SPHINXBUILD%" == "" (
 set SOURCEDIR=.
 REM set BUILDDIR=_build
 set BUILDDIR=..
-set SPHINXPROJ=twitter_mongo_proj
+set SPHINXPROJ=tweego
 
 if "%1" == "" goto help
 

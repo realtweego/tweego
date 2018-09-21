@@ -1,7 +1,7 @@
 import json
+from tweego.config import cfg
+from tweego.keywords import keywords
 import tweepy
-from config import cfg
-from keywords import keywords
 
 consumer_key = cfg['consumer_key']
 consumer_secret = cfg['consumer_secret']

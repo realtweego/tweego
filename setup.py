@@ -3,12 +3,14 @@
 
 """The setup script."""
 
+import configsetup.py
+
 from setuptools import setup, find_packages
 
 with open('README.md') as readme_file:
     readme = readme_file.read()
 
-with open('HISTORY.rst') as history_file:
+with open('docs/history.rst') as history_file:
     history = history_file.read()
 
 requirements = [ ]
@@ -25,26 +27,24 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
-        "Programming Language :: Python :: 2",
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        "Operating System :: OS Independent"
     ],
     description="Python project to scrape Machine Learning tweets, store, and process them.",
     install_requires=requirements,
     license="MIT license",
     long_description=readme + '\n\n' + history,
     include_package_data=True,
-    keywords='twitter_mongo_proj',
-    name='twitter_mongo_proj',
-    packages=find_packages(include=['twitter_mongo_proj']),
+    keywords='Twitter, MongoDB',
+    name='tweego',
+    packages=find_packages(include=['tweego']),
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://github.com/ktroutman/twitter_mongo_proj',
+    url='https://github.com/realtweego/tweego',
     version='0.1.0',
     zip_safe=False,
 )

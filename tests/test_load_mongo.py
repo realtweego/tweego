@@ -1,19 +1,15 @@
-from load_mongo import load_data
-from pymongo import MongoClient
+from tweego.tm_connection import read_into_Mongo
+from tweego.tm_connection import load_to_mongo
+from tweego.config import client
+import json
 
-def test_db_notempty():
-
-	client = MongoClient()
-	result = client.twitter.collections.tweets.count()
-	assert result != 0
-
-
-def test_load_mongo():
-
-	client = MongoClient()
-	before = client.twitter.collections.tweets.count()
-	load_data()
-	after = client.twitter.collections.tweets.count()
+def test_load_mongo(tweet):
+	rim = read_into_Mongo(1,1)
+	before = client.twitter.collections.tweets_labeled.count()
+	tweet = json.loads(tweet)
+	rim.new_tweet(tweet)
+	load_to_mongo(1,1)
+	after = client.twitter.collections.tweets_labeled.count()
 	assert after > before 
 
  

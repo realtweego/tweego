@@ -1,7 +1,7 @@
 import argparse
 import pymongo
-from scrape_twitter import get_tweets
-from config import client
+from tweego.scrape_twitter import get_tweets
+from tweego.config import client
 
 
 class read_into_Mongo:
