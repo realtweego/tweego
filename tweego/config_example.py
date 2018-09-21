@@ -1,4 +1,5 @@
 import pymongo
+import urllib
 
 cfg = { 
     "consumer_key"        : "",
