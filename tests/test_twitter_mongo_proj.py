@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Tests for `twitter_mongo_proj` package."""
+"""Tests for `tweego` package."""
 
 import pytest
 import json
-from twitter_mongo_proj import scrape_twitter
+from tweego import scrape_twitter
 
 
 def test_scrape():
