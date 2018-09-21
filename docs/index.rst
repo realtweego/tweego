@@ -11,7 +11,7 @@ Contents
    :maxdepth: 1
    
    overview.rst
-   readme.rst
+   readme.md
    installation.rst
    usage.rst
    contributing.rst
