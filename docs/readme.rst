@@ -1,5 +1,5 @@
 ======
-readme
+README
 ======
 
-.. mdinclude:: readme.md
+.. mdinclude:: ../../readme.md
