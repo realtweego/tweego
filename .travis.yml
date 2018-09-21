@@ -3,7 +3,7 @@ services: mongodb
 language: python
 python:
   - 3.6
-  - cp tweego/config_example.py tweego.config
+cp tweego/config_example.py tweego.config
 
 
 # Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
