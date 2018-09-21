@@ -14,7 +14,6 @@ Contents
    readme.rst
    installation.rst
    usage.rst
-   modules.rst
    contributing.rst
    authors.rst
    history.rst
