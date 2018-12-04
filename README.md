@@ -16,7 +16,7 @@ See documentation: https://tweego.readthedocs.io/en/latest/
 3. Install all required modules:
 
    ```pip install -r requirements.txt
-   pip install -r requirements_dev.txt
+      pip install -r requirements_dev.txt
 	 ```
 
 	 in case problems with permissions, try:
