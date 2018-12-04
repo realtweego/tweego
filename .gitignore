@@ -106,4 +106,4 @@ ENV/
 tweego/config.py
 
 # generated config.ini file from ConfigParser when packaging project
-tweego/confing.ini
+tweego/config.ini
