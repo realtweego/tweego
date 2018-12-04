@@ -25,5 +25,5 @@ config['cloudmachine'] = {
 }
 
 #if somewhere in directory does not exist config file:
-with open("tweepy\config.ini", 'w') as configfile:
+with open("config.ini", 'w') as configfile:
     config.write(configfile)
