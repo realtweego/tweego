@@ -28,8 +28,7 @@ See documentation: https://tweego.readthedocs.io/en/latest/
    *Note that this confidential config.py file will be git-ignored and not shared publicly.*
 
 5. Install the program locally:
-
-    pip install -e .
+    `pip install -e .`
 
 6. Add search keywords which you would like to tweet about: `tweego/keywords.py`
 
