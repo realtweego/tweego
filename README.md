@@ -1,4 +1,4 @@
-# 
+#
 
 ![project flowchart](https://github.com/ktroutman/tweego/blob/master/title_image.png)
 
@@ -16,22 +16,23 @@ See documentation: https://tweego.readthedocs.io/en/latest/
 3. Install all required modules:
 
     pip install -r requirements.txt
-	
-	pip install -r requirements_dev.txt 
-	
-	in case problems with permissions try: 
-	pip install --user -r requirements_dev.txt
-    
-4. Install the program locally:
- 
-    pip install -e .
- 
-5. Add your twitter keys and mongo connection to config.py:
 
-    `cp tweego/config_example.py tweego/config.py`
-    
+	pip install -r requirements_dev.txt
+
+	in case problems with permissions try:
+	pip install --user -r requirements_dev.txt
+
+4. Add your twitter keys and mongo connection to config.py:
+
+	    `cp tweego/config_example.py tweego/config.py`
+*Note that this confidential config.py file will be git-ignored and not shared publicly*
+
+5. Install the program locally:
+
+    pip install -e .
+
 6. Add search keywords which you would like to tweet about: `tweego/keywords.py`
-	
+
 7. Install MongoDB and start the server
 
 8. Run tests
