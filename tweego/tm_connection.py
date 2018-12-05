@@ -13,8 +13,8 @@ class read_into_Mongo:
         self.limit = limit
         self.counter = 0
     def load_data(self):
-        '''insert the data into the mongoDB into a collection called tweets
-        if tweets doesn't exist, it will be created.'''
+        '''insert the data into the mongoDB into a collection called tweets_labeled.
+        if tweets_labeled doesn't exist, it will be created.'''
 
         followers = [tweet['followers'] for tweet in self.buffer]
         for tweet in self.buffer:
@@ -33,6 +33,7 @@ class read_into_Mongo:
 
 def load_to_mongo(chunk_size, limit):
     get_tweets(limit, read_into_Mongo(chunk_size, limit).new_tweet)
+    #get_tweets(limit, callback = read_into_Mongo.new_tweet)
 
 if __name__ == '__main__':
 
