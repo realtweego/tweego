@@ -3,7 +3,7 @@
 
 """The setup script."""
 
-import configsetup.py
+import configsetup
 
 from setuptools import setup, find_packages
 
