@@ -22,7 +22,7 @@ def main(chunk_size, limit):
     for tweet in streamed:
         if tweet['followers'] == max(followers):
             message = 'By @'+tweet['username']+'\n\n'+tweet['text']
-    return api.update_status(status=message)
+    #return api.update_status(status=message)
 
 if __name__ == "__main__":
     main(3, 10)
