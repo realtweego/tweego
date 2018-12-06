@@ -3,6 +3,8 @@ from tweego.config import cfg
 from tweego.keywords import keywords
 import tweepy
 
+#plug in oauth
+
 consumer_key = cfg['consumer_key']
 consumer_secret = cfg['consumer_secret']
 access_token = cfg['access_token']
@@ -12,7 +14,6 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True)
 user = api.me()
 print("connection established with user: ", user.name)
-
 
 class StreamListener(tweepy.StreamListener):
     def __init__(self, limit, callback):
@@ -42,8 +43,8 @@ class StreamListener(tweepy.StreamListener):
         if 'extended_tweet' in t:
             for hashtag in t['extended_tweet']['entities']['hashtags']:
                 hashtags.append(hashtag['text'])
-        elif 'hashtags' in t['entities']:
-            hashtags = t['entities']['hashtags']
+        elif 'hashtags' in t['entities'] and len(t['entities']['hashtags']) > 0:
+            hashtags = [item['text'] for item in t['entities']['hashtags']]
         else:
             hashtags = []
         return hashtags

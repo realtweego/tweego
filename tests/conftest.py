@@ -15,7 +15,7 @@ tweepy.API = MagicMock()
 
 def send_tweet(self, *args, **kwargs):
     """Stub for filter method that returns one single tweet"""
-    self.listener.on_data(open('tweet.json').read())
+    self.listener.on_data(open('tweet.json', encoding='utf-8').read())
 
 tweepy.Stream.filter = send_tweet
 
