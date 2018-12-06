@@ -25,4 +25,4 @@ def main(chunk_size, limit):
     #return api.update_status(status=message)
 
 if __name__ == "__main__":
-    main(3, 10)
+    main(10, 100)

@@ -5,7 +5,7 @@ from subprocess import call
 
 CMD = 'python3 tweego/tweego/twitter_push.py'
 USER = 'ec2-user'
-HOST = 'ec2-3-16-111-174.us-east-2.compute.amazonaws.com'
+HOST = 'ec2-18-220-154-144.us-east-2.compute.amazonaws.com'
 c = Connection(
         user= USER,
         host= HOST,
@@ -37,5 +37,9 @@ def install(context):
 
 
 @task
-def run(context):
+def singlerun(context):
     c.run(f' {CMD}')
+
+@task
+def repeatrun(context):
+    c.run(f'sudo echo "0,20,40 * * * * ec2-user {CMD}" >> /etc/crontab') #cron daemon to run jobs frequently. in this case at the 0, 20, and 40 minute mark of every hour
