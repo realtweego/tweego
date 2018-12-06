@@ -107,3 +107,6 @@ tweego/config.py
 
 # generated config.ini file from ConfigParser when packaging project
 tweego/config.ini
+
+# credentials for AWS server
+*.pem
