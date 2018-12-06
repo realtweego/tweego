@@ -15,12 +15,14 @@ See documentation: https://tweego.readthedocs.io/en/latest/
 
 3. Install all required modules:
 
-    pip install -r requirements.txt
+   `pip install -r requirements.txt`
 
-	pip install -r requirements_dev.txt
+	 as well as:
+	 
+    `pip install -r requirements_dev.txt`
 
-	in case problems with permissions try:
-	pip install --user -r requirements_dev.txt
+	 in case problems with permissions, try:
+	 `pip install --user -r requirements_dev.txt`
 
 4. Add your twitter keys and mongo connection to config.py:
 	    `cp tweego/config_example.py tweego/config.py`
